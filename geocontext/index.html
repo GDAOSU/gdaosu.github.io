@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Geospecific View Generation - Geometry-Context Aware High-resolution Ground View Inference from Satellite Views">
+  <meta name="keywords" content="Diffusion, Satellite, Ground view synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geospecific View Generation - Geometry-Context Aware High-resolution Ground View Inference from Satellite Views</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QHN45QCS2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6QHN45QCS2');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://ninglixu.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+
+  </div>
+</nav> -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Geospecific View Generation - Geometry-Context Aware High-resolution Ground View Inference from Satellite Views</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://ninglixu.github.io/">Ningli Xu</a>,</span>
+            <span class="author-block">
+              <a href="https://u.osu.edu/qin.324/">Rongjun Qin</a>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">The Ohio State University, Columbus, OH</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><strong style="color: brown;">ECCV 2024</strong></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2407.08061"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/GDAlab/GeoContext-v1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <!-- <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span> -->
+                  <p>🤗</p>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./material/teaser.png"/>
+      <h2 class="subtitle has-text-centered">A teaser example illustrating generating photorealistic ground-level views from satellite views.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section"  style="background-color: rgb(248, 247, 247);">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Predicting realistic ground views from satellite imagery in urban scenes is a challenging task due to the significant view gaps between satellite and ground-view images. We propose a novel pipeline to tackle this challenge, by generating geospecifc views that maximally respect the weak geometry and texture from multi-view satellite images. Different from existing approaches that hallucinate images from cues such as partial semantics or geometry from overhead satellite images, our method directly predicts ground-view images at geolocation by using a comprehensive set of information from the satellite image, resulting in ground-level images with a resolution boost at a factor of ten or more. We leverage a novel building refinement method to reduce geometric distortions in satellite data at ground level, which ensures the creation of accurate conditions for view synthesis using diffusion networks. Moreover, we proposed a novel geospecific prior, which prompts distribution learning of diffusion models to respect image samples that are closer to the geolocation of the predicted images. We demonstrate our pipeline is the first to generate close-to-real and geospecific ground views merely based on satellite images.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Pipeline-->
+        <h2 class="title is-3">Pipeline</h2>
+        <div class="content has-text-justified">
+          <p>
+            Overview of our pipeline. <strong>Top-down View Stage</strong>  and <strong>Projection Stage</strong>: the satellite textures are projected to the refined 3D geometry and then projected back to ground-view 2D space. <strong>Ground-view Stage</strong>: 
+            the ground view satellite texture and corresponding high-frequency layout information serve as the conditions. <strong>Texture-guided Generation Stage</strong>: we use the recent successful diffusion model conditioning on ground-view satellite textures, high-frequency information with the geospecific prior. 
+          </p>
+        </div>
+        <div class="container is-max-desktop">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./material/pipeline.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- Pipeline-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!--/ dataset. -->
+        <h2 class="title is-3">Dataset</h2>
+        <!-- <div class="container is-max-desktop">
+          <div class="hero-body">
+            <img src="./material/dataset.png"/>
+          </div>
+        </div> -->
+        <div class="container is-max-desktop">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./material/dataset.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <br/>
+        <!--/ dataset. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!--/ dataset. -->
+        <h2 class="title is-3">Qualitative results</h2>
+        <div class="content has-text-justified">
+        </div>
+        <div class="container is-max-desktop">
+            <img src="./material/results.png"/>
+        </div>
+        <br/>
+        <!--/ dataset. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!--/ dataset. -->
+        <h2 class="title is-3">Ablation Study</h2>
+        <div class="content has-text-justified">
+        </div>
+        <div class="container is-max-desktop">
+            <img src="./material/ablation.png"/>
+        </div>
+        <br/>
+        <!--/ dataset. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!--/ dataset. -->
+        <h2 class="title is-3">Limitation</h2>
+        <div class="content has-text-justified">
+          <p>
+            The inherent randomness of the diffusion model makes the synthesis results (marked as orange rectangles) not consistent with their neighbor views.
+          </p>
+        </div>
+        <div class="container is-max-desktop">
+            <img src="./material/limitation.png"/>
+        </div>
+        <br/>
+        <!--/ dataset. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent satellite-to-ground synthesis work that was introduced as ours.
+          </p>
+          <p>
+            Some geometry-based methods such as <a href="https://github.com/lizuoyue/sat2scene">Sat2scene</a>/ <a href="https://arxiv.org/abs/2012.06628">Sat2Vid</a> bridge the top-down views and ground views based on the predicted geometry and then perform ground-view synthesis by embedding the texture into point clouds.
+          </p>
+          <p>
+            Some works such as <a href="https://github.com/Amazingren/CrossMLP">CrossMLP</a>, <a href="https://github.com/sswuai/PanoGAN">PanoGAN</a> directly learn the relationship between top-down views and ground-views with auxlirary information such as semantics. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{xu2024geospecificviewgeneration,
+      title={Geospecific View Generation -- Geometry-Context Aware High-resolution Ground View Inference from Satellite Views}, 
+      author={Ningli Xu and Rongjun Qin},
+      year={2024},
+      eprint={2407.08061},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.08061}, 
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Fell free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
