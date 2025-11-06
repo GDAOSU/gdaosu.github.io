@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QinLab - gitwebs</title>
+  <meta name="description" content="CVPR-style research portfolio with navigation and project gallery." />
+  <meta name="theme-color" content="#0b0d12" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle cx='64' cy='64' r='62' fill='%230b0d12'/%3E%3Cpath d='M64 20a44 44 0 100 88 44 44 0 000-88zm0 8a36 36 0 110 72 36 36 0 010-72z' fill='%23b9cdfc'/%3E%3Cpath d='M64 40a24 24 0 1024 24 24 24 0 00-24-24zm0 10a14 14 0 11-14 14 14 14 0 0114-14z' fill='%23fff'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-soft: #121520;
+      --card: #151a28;
+      --text: #e6ecff;
+      --muted: #a9b2cf;
+      --brand: #4f7cff;
+      --brand-2: #8aa2ff;
+      --accent: #5ee3ff;
+      --ok: #46dcb0;
+      --warn: #ffb54a;
+      --bad: #ff6b7a;
+      --ring: 0 0 0 3px rgba(79,124,255,.35);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: radial-gradient(1000px 600px at 10% -10%, rgba(79,124,255,.14), transparent 40%),
+                  radial-gradient(800px 600px at 90% 10%, rgba(94,227,255,.12), transparent 40%),
+                  linear-gradient(180deg, var(--bg), #0b0d12 40%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(1.2) blur(10px);
+      background: color-mix(in oklab, var(--bg-soft) 88%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .brand .logo { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--accent)); box-shadow: 0 6px 30px rgba(79,124,255,.35); }
+    .brand span { font-weight: 700; letter-spacing: .2px; }
+
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 550; padding: 6px 10px; border-radius: 8px; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--text); background: rgba(255,255,255,.06); outline: none; box-shadow: var(--ring); }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.12); padding: 10px 14px; border-radius: 12px; color: var(--text); text-decoration: none; font-weight: 600; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
+    .btn:hover { border-color: rgba(255,255,255,.22); transform: translateY(-1px); transition: .2s ease; }
+
+    .toggle { cursor: pointer; border: 1px solid rgba(255,255,255,.12); padding: 8px 10px; border-radius: 10px; font-size: 14px; color: var(--muted); background: rgba(255,255,255,.04); }
+
+    /* Hero */
+    .hero { padding: 46px 0 24px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.02em; }
+    .hero p { margin: 0; color: var(--muted); font-size: clamp(14px, 1.6vw, 18px); }
+
+    /* Section title */
+    .section { padding: 8px 0 40px; }
+    .section h2 { font-size: 18px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 14px 0 18px; }
+
+    /* Project grid */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+/*    .card { grid-column: span 12; background: linear-gradient(180deg, var(--card), #0f1420 140%); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; overflow: clip; box-shadow: 0 10px 30px rgba(0,0,0,.25); display: grid; grid-template-columns: 1.2fr 1fr; min-height: 220px; }
+    .card:nth-child(even) { grid-template-columns: 1fr 1.2fr; }
+
+    .card-media { position: relative; min-height: 220px; }
+    .card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }*/
+
+    /* Force equal-width thumbnail + text columns */
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  grid-column: span 12; background: linear-gradient(180deg, var(--card), #0f1420 140%); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; overflow: clip; box-shadow: 0 10px 30px rgba(0,0,0,.25); display: grid; grid-template-columns: 1.2fr 1fr; min-height: 220px; 
+
+}
+
+.card:nth-child(even) {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+/* Uniform image aspect ratio */
+.card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+    .card-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .kicker { display: inline-flex; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .02em; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: var(--text); }
+    .badge.ok { border-color: rgba(70,220,176,.45); background: rgba(70,220,176,.08); }
+    .badge.warn { border-color: rgba(255,181,74,.45); background: rgba(255,181,74,.08); }
+
+    .card h3 { margin: 4px 0 4px; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.25; letter-spacing: -.01em; }
+    .card .meta { color: var(--muted); font-size: 14px; }
+
+    .actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .pill-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; color: var(--text); border: 1px solid rgba(255,255,255,.12); padding: 8px 12px; border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); }
+    .pill-link:hover { border-color: rgba(255,255,255,.22); transform: translateY(-1px); transition: .2s ease; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .card { grid-template-columns: 1fr; }
+      .card:nth-child(even) { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 700px) {
+      .card { grid-column: span 12; }
+    }
+
+    /* Footer */
+    footer { color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); margin-top: 40px; }
+    footer .foot { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+
+    /* Focus visibility */
+    :focus-visible { outline: none; box-shadow: var(--ring); }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>OSU GDA QinLab</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero container" aria-labelledby="hero-title">
+      <h1 id="hero-title">Research Projects for Conference</h1>
+      <p>This is a navigation page, for more info please refer to our lab website.</p>
+    </section>
+
+    <section id="projects" class="section container" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+
+      <div class="grid" role="list">
+
+        <!-- Project 2 -->
+        <article class="card" role="listitem">
+          <div class="card-media" aria-hidden="true">
+            <img loading="lazy" src="https://gdaosu.github.io/olbedo/static/images/53a.png" alt="Olbedo dataset sample showing albedo and shading decomposition" />
+          </div>
+          <div class="card-body">
+            <div class="kicker">
+              <span class="badge warn">CVPR 2026</span>
+              <span class="badge">Dataset · Albedo and Shading</span>
+            </div>
+            <h3>Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments</h3>
+            <div class="meta">Aerial photogrammetry dataset with dense ground-truth albedo and shading for weather-agnostic 3D asset creation.</div>
+            <div class="actions">
+              <a class="pill-link" href="https://gdaosu.github.io/olbedo/" target="_blank" rel="noopener">Project Page</a>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- Project 1 -->
+        <article class="card" role="listitem">
+          <div class="card-media" aria-hidden="true">
+            <img loading="lazy" src="https://gdaosu.github.io/geocontext/material/teaser.png" alt="Teaser for Geospecific View Generation showing geometry-context cues" />
+          </div>
+          <div class="card-body">
+            <div class="kicker">
+              <span class="badge ok" title="Oral presentation">ECCV 2024</span>
+              <span class="badge" title="Acceptance stats">Oral 200/8585 · Top 2.3%</span>
+            </div>
+            <h3>Geospecific View Generation: Geometry-Context Aware High-resolution Ground View Inference from Satellite Views</h3>
+            <div class="meta">Ground view synthesis conditioned on satellite imagery with geometry and context priors.</div>
+            <div class="actions">
+              <a class="pill-link" href="https://gdaosu.github.io/geocontext/" target="_blank" rel="noopener">Project Page</a>
+            </div>
+          </div>
+        </article>
+
+
+      </div>
+    </section>
+
+    <section id="about" class="section container" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p style="max-width: 72ch">This site highlights recent research works for CVPR, ICCV, and ECCV project pages.</p>
+    </section>
+
+    <section id="contact" class="section container" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p style="max-width: 72ch">For more info, please navigate to our Lab website.</p>
+      <div class="actions" style="margin-top:10px">
+        <a class="btn" href="https://u.osu.edu/qin.324/">Lab Official Website</a>
+        <a class="btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> Vision & Remote Sensing</small>
+      <small>Built with semantic HTML and progressive enhancement</small>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple theme toggle storing preference
+    const key = 'prefers-dark';
+    const $btn = document.getElementById('toggleTheme');
+    function setTheme(dark) {
+      if (dark) {
+        document.documentElement.style.colorScheme = 'dark';
+        document.body.style.background = "radial-gradient(1000px 600px at 10% -10%, rgba(79,124,255,.14), transparent 40%),
+           radial-gradient(800px 600px at 90% 10%, rgba(94,227,255,.12), transparent 40%),
+           linear-gradient(180deg, var(--bg), #0b0d12 40%)";
+        document.body.style.color = 'var(--text)';
+      } else {
+        document.documentElement.style.colorScheme = 'light';
+        document.body.style.background = '#f7f8fb';
+        document.body.style.color = '#111';
+      }
+      localStorage.setItem(key, dark ? '1' : '0');(key, dark ? '1' : '0');
+    }
+    const initDark = localStorage.getItem(key) !== '0';
+    setTheme(initDark);
+    $btn.addEventListener('click', () => setTheme(localStorage.getItem(key) === '0'));
+  </script>
+
+  <!-- Structured data for better previews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Research Projects",
+    "itemListElement": [
+      
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments",
+          "url": "https://gdaosu.github.io/olbedo/",
+          "image": "https://gdaosu.github.io/olbedo/static/images/53a.png",
+          "isPartOf": {"@type": "Event", "name": "CVPR 2026"}
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "Geospecific View Generation: Geometry-Context Aware High-resolution Ground View Inference from Satellite Views",
+          "url": "https://gdaosu.github.io/geocontext/",
+          "image": "https://gdaosu.github.io/geocontext/material/teaser.png",
+          "isPartOf": {"@type": "Event", "name": "ECCV 2024"}
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
