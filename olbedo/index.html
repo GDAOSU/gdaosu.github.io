@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments">
+  <meta property="og:title" content="Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments" />
+  <meta property="og:description" content="CVPR 2026 Submission: A large-scale intrinsic decomposition dataset for aerial photogrammetry." />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:title" content="Olbedo Dataset">
+  <meta name="twitter:description" content="Large-scale aerial albedo and shading dataset for outdoor environments.">
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="keywords" content="Intrinsic Decomposition, Albedo, Aerial Imagery, Inverse Rendering, Outdoor Dataset, UAV, Photogrammetry">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <title>Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+
+  <!-- ✅ WORKING Before-After slider (BeerSlider) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beerslider/dist/BeerSlider.css" />
+  <script src="https://cdn.jsdelivr.net/npm/beerslider/dist/BeerSlider.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+  <!-- Title + Authors -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title">
+              Olbedo: An Albedo and Shading Aerial Dataset for Large-Scale Outdoor Environments
+            </h1>
+
+            <!-- Author Line (CVPR Format) -->
+            <div class="is-size-5 publication-authors">
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Shuang_Song10" target="_blank">Shuang Song*</a><sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Debao_Huang1" target="_blank">Debao Huang*</a><sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Deyan_Deng1" target="_blank">Deyan Deng</a><sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Haolin_Xiong1" target="_blank">Haolin Xiong</a><sup>2</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Yang_Tang4" target="_blank">Yang Tang</a><sup>1</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Yajie_Zhao1" target="_blank">Yajie Zhao</a><sup>2</sup>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Rongjun_Qin1" target="_blank">Rongjun Qin</a><sup>1</sup>
+              </span>
+
+            </div>
+
+            <div class="is-size-6 has-text-centered" style="margin-top:6px;">
+              * indicates equal contribution
+            </div>
+
+            <!-- Institutions -->
+              <!-- Institutions + Logos -->
+              <div class="has-text-centered" style="margin-top:15px;">
+
+                <div class="is-size-6">
+                  <sup>1</sup> The Ohio State University<br>
+                  <sup>2</sup> University of Southern California
+                </div>
+
+ <div style="margin-top:15px;">
+  <img src="static/logos/osulogo.svg" 
+       alt="OSU Logo"
+       style="height:55px; margin-right:35px; vertical-align:middle;">
+
+  <img src="static/logos/usclogo.png"
+       alt="USC Logo"
+       style="height:135px; vertical-align:middle;">
+</div>
+
+
+              </div>
+
+
+            <div class="is-size-5 publication-authors has-text-centered" style="margin-top:10px;">
+              CVPR 2026 Conference Submission
+            </div>
+
+            <!-- Buttons -->
+            <div class="column has-text-centered" style="margin-top:20px;">
+              <div class="publication-links">
+
+                <span class="link-block">
+                  <a href="https://openreview.net/forum?id=zrfjrNR3a7"
+                     class="external-link button is-normal is-rounded is-primary" target="_blank">
+                    <span>OpenReview</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Dataset (coming soon)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+  <a href="#" class="external-link button is-normal is-rounded is-dark">
+    <span class="icon">
+      <img src="https://huggingface.co/front/assets/huggingface_logo.svg" 
+           alt="HuggingFace" 
+           style="height: 18px; vertical-align: middle;">
+    </span>
+    <span>HuggingFace (coming soon)</span>
+  </a>
+</span>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Teaser Videos -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Comparison Videos</h2>
+
+      <video autoplay controls muted loop width="100%">
+        <source src="static/videos/1.m4v" type="video/mp4">
+      </video>
+      <br><br>
+
+      <video autoplay controls muted loop width="100%">
+        <source src="static/videos/2.m4v" type="video/mp4">
+      </video>
+      <br><br>
+
+      <video autoplay controls muted loop width="100%">
+        <source src="static/videos/3.m4v" type="video/mp4">
+      </video>
+      <br><br>
+
+      <video autoplay controls muted loop width="100%">
+        <source src="static/videos/4.m4v" type="video/mp4">
+      </video>
+      <br><br>
+
+      <video autoplay controls muted loop width="100%">
+        <source src="static/videos/5.m4v" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+
+          <h2 class="title is-3">Abstract</h2>
+
+<div class="content has-text-justified">
+  <p>Photogrammetry has revolutionized 3D content creation, yet it remains fundamentally constrained by a critical bottleneck: <strong>real-world lighting conditions</strong>.
+  Practitioners must capture data under <em>overcast skies</em> to avoid shadows and highlights that become permanently baked into texture maps, breaking physically-based rendering workflows and limiting capture windows.
+  This weather dependency imposes <strong>severe logistical and financial burdens on scalable world digitization</strong>. We address this challenge through intrinsic image decomposition, specifically targeting albedo recovery for aerial photogrammetry.</p>
+
+  <p>We present <strong>Olbedo, the <em>first large-scale, real-world dataset</em> </strong> designed for weather-agnostic 3D asset creation from aerial imagery.
+  Olbedo comprises high-resolution outdoor scenes captured from unmanned aerial vehicles (UAVs), providing dense ground-truth albedo and shading maps alongside comprehensive auxiliary data including camera poses, depth, normals, and synchronized sky dome HDR captures.</p>
+
+  <p>We generate accurate ground truth using an inverse rendering pipeline applied to multi-view aerial datasets, addressing the critical gap in real-world outdoor training data. 
+    To demonstrate Olbedo's effectiveness, we develop a diffusion-based single-image albedo decomposition model, fine-tuned from pre-trained indoor networks using LoRA. 
+    Extensive evaluations on synthetic outdoor datasets and real aerial imagery show <strong>our approach significantly outperforms prior physics-based and unsupervised methods </strong> in recovering intricate material properties under varying lighting conditions.
+    By enabling robust de-lighting of photogrammetric textures, <strong>Olbedo unlocks flexible, weather-agnostic pipelines</strong> that dramatically accelerate the production of photorealistic, relightable digital twins of our world.</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- BEFORE / AFTER SECTION -->
+<section class="section">
+  <div class="container">
+
+    <h2 class="title is-3 has-text-centered">Original vs Albedo (Ours) Texture</h2>
+    <p class="subtitle has-text-centered">Drag the slider to compare</p>
+
+<style>
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    justify-items: center;
+  }
+
+  /* Enforce consistent aspect ratio for all sliders */
+  .bal-container {
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  /* Force both images to match the same framing */
+  .bal-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* ensures same zoom scaling */
+    object-position: center;  /* ensures center alignment */
+    border-radius: 10px;
+  }
+
+  /* Black center split line */
+  .beer-slider-handle {
+    background-color: black !important;
+    width: 3px !important;
+  }
+  .beer-slider-handle:before,
+  .beer-slider-handle:after {
+    background-color: black !important;
+  }
+</style>
+
+
+    <div class="comparison-grid">
+
+      <!-- 11 -->
+      <div id="cmp11" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/11a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/11.png">
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div id="cmp12" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/12a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/12.png">
+        </div>
+      </div>
+
+      <!-- 21 -->
+      <div id="cmp21" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/21a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/21.png">
+        </div>
+      </div>
+
+      <!-- 22 -->
+      <div id="cmp22" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/22a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/22.png">
+        </div>
+      </div>
+
+      <!-- 31 -->
+      <div id="cmp31" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/31a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/31.png">
+        </div>
+      </div>
+
+      <!-- 32 -->
+      <div id="cmp32" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/32a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/32.png">
+        </div>
+      </div>
+
+      <!-- 33 -->
+      <div id="cmp33" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/33a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/33.png">
+        </div>
+      </div>
+
+      <!-- 41 -->
+      <div id="cmp41" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/41a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/41.png">
+        </div>
+      </div>
+
+      <!-- 42 -->
+      <div id="cmp42" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/42a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/42.png">
+        </div>
+      </div>
+
+      <!-- 43 -->
+      <div id="cmp43" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/43a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/43.png">
+        </div>
+      </div>
+
+      <!-- 51 -->
+      <div id="cmp51" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/51a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/51.png">
+        </div>
+      </div>
+
+      <!-- 52 -->
+      <div id="cmp52" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/52a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/52.png">
+        </div>
+      </div>
+
+      <!-- 53 -->
+      <div id="cmp53" class="bal-container beer-slider" data-beer-label="Ours">
+        <img src="static/images/53a.png">
+        <div class="beer-reveal" data-beer-label="Original">
+          <img src="static/images/53.png">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.beer-slider').forEach(el => new BeerSlider(el));
+</script>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page uses the Academic Project Page Template adapted from the Nerfies project page.
+              Licensed under
+              <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
