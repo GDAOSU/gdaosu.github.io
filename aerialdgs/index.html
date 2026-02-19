@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction">
+  <meta property="og:title" content="AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction" />
+  <meta property="og:description" content="AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <title>AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+  <!-- Title + Authors -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title">
+              AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction
+            </h1>
+
+            <!-- Author Line (CVPR Format) -->
+            <!-- <div class="is-size-5 publication-authors">
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=%7EHanyang_Liu3" target="_blank">Hanyang Liu</a>,
+              </span>
+
+              <span class="author-block">
+                <a href="https://openreview.net/profile?id=~Rongjun_Qin1" target="_blank">Rongjun Qin</a>
+              </span>
+
+            </div> -->
+
+
+            <!-- Institutions -->
+              <!-- Institutions + Logos -->
+              <!-- <div class="has-text-centered" style="margin-top:15px;">
+
+                <div class="is-size-6">
+                  The Ohio State University<br>
+                </div> -->
+
+                  <!-- <div style="margin-top:15px;">
+                    <img src="static/logos/osulogo.svg" 
+                        alt="OSU Logo"
+                        style="height:55px; margin-right:35px; vertical-align:middle;">
+                  </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Teaser -->
+<section class="section teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-variable is-3">
+      <div class="column is-one-third">
+        <img
+          class="teaser-media teaser-anim"
+          src="static/images/night_original/vidA_0001.jpg"
+          data-prefix="static/images/night_original/vidA_"
+          data-start="1"
+          data-end="16"
+          data-fps="15"
+          alt="Input aerial video frames">
+        <p class="teaser-subcap"><strong>(a)</strong> Input aerial video captured from a moving flight over urban scenes</p>
+      </div>
+
+      <div class="column is-one-third">
+        <img
+          class="teaser-media teaser-anim"
+          src="static/images/night_rendered/vidB_0001.jpg"
+          data-prefix="static/images/night_rendered/vidB_"
+          data-start="1"
+          data-end="16"
+          data-fps="15"
+          alt="Rendered dynamic scene frames">
+        <p class="teaser-subcap"><strong>(b)</strong> Fixed-view rendered video of the reconstructed dynamic scene</p>
+      </div>
+
+      <div class="column is-one-third">
+        <img class="teaser-media teaser-static" src="static/images/night_comparison_trim.png" alt="Vehicle trajectory comparison">
+        <p class="teaser-subcap"><strong>(c)</strong> Vehicle trajectory comparison in the green box of (b) with SOTA</p>
+      </div>
+    </div>
+
+    <p class="teaser-caption">
+      <strong>Summary.</strong> Given (a) a monocular aerial video of dynamic urban scenes, AeroDGS reconstructs a physically consistent 4D model by jointly integrating static structures and dynamic motion with Gaussian representation. The framework (b) performs photorealistic novel-view synthesis with temporally coherent geometry and (c) achieves higher reconstruction fidelity compared to state-of-the-art methods.
+    </p>
+  </div>
+</section>
+
+<style>
+  .teaser .teaser-media {
+    width: 100%;
+    display: block;
+  }
+
+  .teaser .teaser-anim {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .teaser .teaser-static {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  .teaser .teaser-subcap {
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  .teaser .teaser-caption {
+    margin-top: 0.8rem;
+    text-align: justify;
+    line-height: 1.5;
+  }
+</style>
+
+
+
+
+  <!-- Abstract -->
+  <!-- <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+
+          <h2 class="title is-3">Abstract</h2>
+
+<div class="content has-text-justified">
+  <p>Tmp.</p>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- More results -->
+  <section class="section more-results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">More results</h2>
+      <div class="more-results-grid">
+        <div class="more-item">
+          <video class="more-video" autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/high_original_web.mp4" type="video/mp4">
+          </video>
+          <p class="more-caption"><strong>(a)</strong> Input aerial sequence (Downtown-High).</p>
+        </div>
+
+        <div class="more-item">
+          <video class="more-video" autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/high_rendered_web.mp4" type="video/mp4">
+          </video>
+          <p class="more-caption"><strong>(b)</strong> Rendered video from our reconstructed model (Downtown-High).</p>
+        </div>
+
+        <div class="more-item">
+          <video class="more-video" autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/low_original_web.mp4" type="video/mp4">
+          </video>
+          <p class="more-caption"><strong>(c)</strong> Input aerial sequence (Intersection-Day).</p>
+        </div>
+
+        <div class="more-item">
+          <video class="more-video" autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/low_rendered_web.mp4" type="video/mp4">
+          </video>
+          <p class="more-caption"><strong>(d)</strong> Rendered video from our reconstructed model (Intersection-Day).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .more-results .more-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 1.5rem;
+    }
+
+    .more-results .more-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .more-results .more-caption {
+      margin-top: 0.45rem;
+      text-align: center;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .more-results .more-results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+<script>
+  (function animateTeaserFrames() {
+    function pad4(n) {
+      return String(n).padStart(4, '0');
+    }
+
+    document.querySelectorAll('.teaser-anim').forEach(function (img) {
+      var prefix = img.dataset.prefix;
+      var start = Number(img.dataset.start || 1);
+      var end = Number(img.dataset.end || start);
+      var fps = Number(img.dataset.fps || 15);
+      var frame = start;
+      var intervalMs = Math.max(1, Math.round(1000 / fps));
+
+      setInterval(function () {
+        frame = frame >= end ? start : frame + 1;
+        img.src = prefix + pad4(frame) + '.jpg';
+      }, intervalMs);
+    });
+  })();
+</script>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page uses the Academic Project Page Template adapted from the Nerfies project page.
+              Licensed under
+              <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
