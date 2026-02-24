@@ -49,33 +49,22 @@
               AeroDGS: Physically Consistent Dynamic Gaussian Splatting for Single-Sequence Aerial 4D Reconstruction
             </h1>
 
-            <!-- Author Line (CVPR Format) -->
-            <!-- <div class="is-size-5 publication-authors">
+            <div class="is-size-3 publication-title" style="margin-top: 0.75rem;">
+              CVPR 2026
+            </div>
 
+            <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
               <span class="author-block">
-                <a href="https://openreview.net/profile?id=%7EHanyang_Liu3" target="_blank">Hanyang Liu</a>,
+                Hanyang Liu,
               </span>
-
               <span class="author-block">
-                <a href="https://openreview.net/profile?id=~Rongjun_Qin1" target="_blank">Rongjun Qin</a>
+                Rongjun Qin
               </span>
+            </div>
 
-            </div> -->
-
-
-            <!-- Institutions -->
-              <!-- Institutions + Logos -->
-              <!-- <div class="has-text-centered" style="margin-top:15px;">
-
-                <div class="is-size-6">
-                  The Ohio State University<br>
-                </div> -->
-
-                  <!-- <div style="margin-top:15px;">
-                    <img src="static/logos/osulogo.svg" 
-                        alt="OSU Logo"
-                        style="height:55px; margin-right:35px; vertical-align:middle;">
-                  </div> -->
+            <div class="is-size-5 publication-authors" style="margin-top: 0.35rem;">
+              <span class="author-block">The Ohio State University</span>
+            </div>
 
           </div>
         </div>
@@ -157,21 +146,33 @@
 
 
   <!-- Abstract -->
-  <!-- <section class="section hero is-light">
+  <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-
           <h2 class="title is-3">Abstract</h2>
-
-<div class="content has-text-justified">
-  <p>Tmp.</p>
-</div>
-
+          <div class="content has-text-justified">
+            <p>
+              Recent advances in 4D scene reconstruction have significantly improved dynamic modeling across various domains. However, existing approaches remain limited under aerial conditions with single-view capture, wide spatial range, and dynamic objects of limited spatial footprint and large motion disparity. These challenges cause severe depth ambiguity and unstable motion estimation, making monocular aerial reconstruction inherently ill-posed. To this end, we present <strong>AeroDGS</strong>, a physics-guided 4D Gaussian splatting framework for monocular UAV videos. AeroDGS introduces a Monocular Geometry Lifting module that reconstructs reliable static and dynamic geometry from a single aerial sequence, providing a robust basis for dynamic estimation. To further resolve monocular ambiguity, we propose a Physics-Guided Optimization module that incorporates differentiable ground-support, upright-stability, and trajectory-smoothness priors, transforming ambiguous image cues into physically consistent motion. The framework jointly refines static backgrounds and dynamic entities with stable geometry and coherent temporal evolution. We additionally build a real-world UAV dataset that spans various altitudes and motion conditions to evaluate dynamic aerial reconstruction. Experiments on synthetic and real UAV scenes demonstrate that AeroDGS outperforms state-of-the-art methods, achieving superior reconstruction fidelity in dynamic aerial environments.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
+
+  <!-- Method -->
+  <section class="section method">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <figure>
+        <img src="static/images/method.png" alt="Overview of the proposed AeroDGS" style="width: 100%; display: block;">
+      </figure>
+      <p class="has-text-justified" style="margin-top: 0.85rem;">
+        <strong>Overview of the proposed AeroDGS.</strong> Given a monocular aerial sequence, AeroDGS introduces a <strong>Monocular Geometry Lifting</strong> module to reconstruct scene geometry and separate dynamic foreground from static background. The recovered seeds are composed and jointly optimized in a unified Gaussian representation. A <strong>Physics-Guided Optimization</strong> module is proposed to resolve pose ambiguity of dynamic objects under monocular settings, ensuring physically consistent 4D reconstruction.
+      </p>
+    </div>
+  </section>
 
   <!-- More results -->
   <section class="section more-results">
