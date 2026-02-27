@@ -29,6 +29,7 @@ This repository contains the source code for **QinLab Selected Projects**, a lig
 
 ---
 
+<!--
 ## File Structure
 ```
 /
@@ -38,11 +39,12 @@ This repository contains the source code for **QinLab Selected Projects**, a lig
 ├── README.md             Project documentation
 └── (Optional) css/, js/  Add if you later split styles or scripts
 ```
+-->
 ---
 
 ## The site will be available at:
 
-https://gdaosu.github.io/<repository-name>/
+https://gdaosu.github.io/<repository-name>
 
 ---
 
@@ -64,6 +66,8 @@ To include more items, duplicate a <article class="card"> block in index.html an
 
 - **Geospecific View Generation**
   High resolution ground view inference from satellite imagery. ECCV 2024 oral.
+- **AeroDGS**
+  Physically consistent dynamic Gaussian Splatting for single-sequence aerial 4D reconstruction.
 
 ---
 
