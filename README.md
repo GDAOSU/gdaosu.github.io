@@ -30,19 +30,19 @@ This repository contains the source code for **QinLab Selected Projects**, a lig
 ---
 
 ## File Structure
-
+```
 /
 ├── index.html            Main webpage
 ├── assets/
 │   └── lab_logo.jpg      Lab logo used in the navbar and favicon
 ├── README.md             Project documentation
 └── (Optional) css/, js/  Add if you later split styles or scripts
-
+```
 ---
 
 ## The site will be available at:
 
-https://osugda.github.io/<repository-name>/
+https://gdaosu.github.io/<repository-name>/
 
 ---
 
