@@ -157,6 +157,52 @@
   }
 </style>
 
+  <section class="section comparison-strip">
+    <div class="container is-max-desktop">
+      <div class="columns is-variable is-5">
+        <div class="column">
+          <figure class="comparison-panel">
+            <img class="comparison-gif" src="static/images/original_osu.gif" alt="Original video">
+          </figure>
+          <p class="comparison-caption">Original video</p>
+        </div>
+        <div class="column">
+          <figure class="comparison-panel">
+            <img class="comparison-gif" src="static/images/result_osu.gif" alt="Dynamic 3DGS using our AeroDGS modeling">
+          </figure>
+          <p class="comparison-caption">Dynamic 3DGS using our AeroDGS modeling</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .comparison-strip {
+      padding-top: 0;
+      padding-bottom: 2rem;
+    }
+
+    .comparison-strip .comparison-panel {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .comparison-strip .comparison-gif {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .comparison-strip .comparison-caption {
+      margin-top: 0.65rem;
+      text-align: center;
+      line-height: 1.35;
+      font-family: 'Google Sans', sans-serif;
+    }
+  </style>
+
 
 
 
