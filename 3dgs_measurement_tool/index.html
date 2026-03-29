@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Accurate Point Measurement in 3DGS: A New Alternative to Traditional Stereoscopic-View Based Measurements.">
+  <meta property="og:title" content="3DGS Measurement Tool" />
+  <meta property="og:description" content="Interactive browser tool for accurate point measurement in 3D Gaussian Splatting with geometry creation and export." />
+  <meta property="og:url" content="https://gdaosu.github.io/3dgs_measurement_tool/" />
+  <meta property="og:image" content="https://gdaosu.github.io/3dgs_measurement_tool/static/images/demo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:title" content="3DGS Measurement Tool">
+  <meta name="twitter:description" content="Accurate point measurement and geometry export for 3DGS scenes.">
+  <meta name="twitter:image" content="https://gdaosu.github.io/3dgs_measurement_tool/static/images/demo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="3DGS, Gaussian Splatting, measurement, Cesium, photogrammetry, geospatial">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3DGS Measurement Tool</title>
+  <link rel="icon" type="image/jpeg" href="../assets/lab_logo.jpg">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Accurate Point Measurement in 3DGS</h1>
+            <h2 class="title is-4">A New Alternative to Traditional Stereoscopic-View Based Measurements</h2>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Deyan Deng<sup>1</sup>,</span>
+              <span class="author-block">Rongjun Qin<sup>1,*</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The Ohio State University</span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>*</sup> Corresponding author</span>
+            </div>
+
+            <div class="column has-text-centered" style="margin-top: 12px;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://github.com/GDAOSU/3dgs_measurement_tool" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>GitHub</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://huggingface.co/spaces/GDAOSU/3dgs_measurement_tool" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-warning">
+                    <span class="icon">
+                      <img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face" style="height: 18px; vertical-align: middle;">
+                    </span>
+                    <span>Hugging Face Demo</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2603.24716" target="_blank" rel="noopener" class="external-link button is-normal is-rounded" style="background-color:#A52C25;border-color:#A52C25;color:white;">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video autoplay muted loop controls preload="metadata" playsinline width="100%" poster="static/images/demo.png">
+          <source src="static/video/3dgs_measurement_tool_demo_30s.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              3D Gaussian Splatting (3DGS) has revolutionized real-time rendering with its state-of-the-art novel view synthesis, but its utility for accurate geometric measurement remains underutilized. Compared to multi-view stereo (MVS) point clouds or meshes, 3DGS rendered views present superior visual quality and completeness. However, current point measurement methods still rely on demanding stereoscopic workstations or direct picking on often-incomplete and inaccurate 3D meshes. As a novel view synthesizer, 3DGS renders exact source views and smoothly interpolates in-between views. This allows users to intuitively pick congruent points across different views while operating 3DGS models. By triangulating these congruent points, one can precisely generate 3D point measurements. This approach mimics traditional stereoscopic measurement but is significantly less demanding: it requires neither a stereo workstation nor specialized operator stereoscopic capability.
+            </p>
+            <p>
+              Furthermore, it enables multi-view intersection (more than two views) for higher measurement accuracy. We implemented a web-based application to demonstrate this proof-of-concept (PoC). Using several UAV aerial datasets, we show this PoC allows users to successfully perform highly accurate point measurements, achieving accuracy matching or exceeding traditional stereoscopic methods on standard hardware. Specifically, our approach significantly outperforms direct mesh-based measurements. Quantitatively, our method achieves RMSEs in the 1-2 cm range on well-defined points. More critically, on challenging thin structures where mesh-based RMSE was 0.062 m, our method achieved 0.037 m. On sharp corners poorly reconstructed in the mesh, our method successfully measured all points with a 0.013 m RMSE, whereas the mesh method failed entirely. Code is available at: <a href="https://github.com/GDAOSU/3dgs_measurement_tool" target="_blank" rel="noopener">https://github.com/GDAOSU/3dgs_measurement_tool</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Key Features</h2>
+      <div class="content has-text-centered">
+        <ul style="list-style: none; margin-left: 0;">
+          <li>Interactive Cesium-based 3D visualization for 3DGS scenes.</li>
+          <li>Accurate point measurement using multi-ray intersection.</li>
+          <li>Polyline and polygon creation from measured points.</li>
+          <li>Export support for GeoJSON, CSV, and KML.</li>
+          <li>Custom model loading from URL or S3 with optional height offset.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Citation</h2>
+          <div class="content has-text-left">
+<pre><code>@misc{deng2026accurate,
+  title={Accurate Point Measurement in 3DGS -- A New Alternative to Traditional Stereoscopic-View Based Measurements},
+  author={Deyan Deng and Rongjun Qin},
+  year={2026},
+  eprint={2603.24716},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              Contact: deng.1069@osu.edu, qin.324@osu.edu<br>
+              Back to <a href="../">QinLab selected projects</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

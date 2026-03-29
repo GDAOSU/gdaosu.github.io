@@ -61,6 +61,9 @@ To include more items, duplicate a <article class="card"> block in index.html an
 
 ## Current Highlights
 
+- **3DGS Measurement Tool**
+  Upcoming project page for a utility focused on 3D Gaussian Splatting measurement and analysis workflows.
+
 - **Olbedo**
   Albedo and shading decomposition dataset for outdoor aerial photogrammetry.
 
