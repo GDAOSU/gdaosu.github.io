@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SatSplat: Geometrically-Accurate Gaussian Splatting for Satellite Imagery">
+  <meta name="keywords" content="SatSplat, satellite photogrammetry, Gaussian Splatting, 2DGS, digital surface model, remote sensing">
+  <meta property="og:title" content="SatSplat: Geometrically-Accurate Gaussian Splatting for Satellite Imagery">
+  <meta property="og:description" content="SatSplat adapts 2D Gaussian Splatting to affine satellite cameras for accurate and efficient digital surface modeling from multi-date imagery.">
+  <meta property="og:image" content="static/images/teaser.jpg">
+  <meta property="og:type" content="website">
+
+  <title>SatSplat: Geometrically-Accurate Gaussian Splatting for Satellite Imagery</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              SatSplat: Geometrically-Accurate Gaussian Splatting for Satellite Imagery
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Shuang Song<sup>*</sup>,</span>
+              <span class="author-block">Jiyong Kim<sup>*</sup>,</span>
+              <span class="author-block">Rongjun Qin<sup>&dagger;</sup></span>
+            </div>
+
+            <div class="is-size-6 has-text-centered mt-2">
+              The Ohio State University<br>
+              <sup>*</sup> Equal contribution &nbsp; <sup>&dagger;</sup> Corresponding author
+            </div>
+
+            <div class="institution-logos">
+              <a href="https://ceg.osu.edu/" target="_blank" rel="noopener">
+                <img src="static/logos/osulogo.svg" alt="The Ohio State University logo">
+              </a>
+              <a href="https://u.osu.edu/qin.324/" target="_blank" rel="noopener">
+                <img class="lab-logo" src="static/logos/lab_logo.jpg" alt="Geospatial Data Analytics Laboratory logo">
+              </a>
+            </div>
+
+            <div class="is-size-5 mt-4">
+              <a href="https://my.asprs.org/PERS/PERS/Default.aspx" target="_blank" rel="noopener">
+                Photogrammetric Engineering &amp; Remote Sensing
+              </a>
+            </div>
+
+            <div class="publication-links mt-5">
+              <span class="link-block">
+                <a href="#" onclick="return false;" class="button is-normal is-rounded is-article" aria-disabled="true">
+                  <span class="icon"><i class="fa-regular fa-file-lines"></i></span>
+                  <span>Article coming soon</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://arxiv.org/" class="button is-normal is-rounded is-arxiv" target="_blank" rel="noopener">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/gdaosu/satsplat" class="button is-normal is-rounded is-code" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fa-brands fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+
+            <figure class="hero-figure">
+              <img src="static/images/teaser.jpg" alt="SatSplat graphic overview showing satellite DSM reconstruction comparisons">
+              <figcaption class="caption">
+                SatSplat reconstructs geometrically accurate digital surface models from multi-date satellite imagery while remaining efficient enough for practical large-scale processing.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              High-resolution satellite imagery demands 3D reconstruction methods that deliver both speed and geometric accuracy. Recent adaptations of 3D Gaussian Splatting (3DGS) to satellite imagery demonstrate strong efficiency, but reconstruction quality often degrades under diverse illumination across multi-date, high-altitude acquisitions with small intersection angles, limiting applicability to remote sensing and vision tasks.
+            </p>
+            <p>
+              We present <strong>SatSplat</strong>, the first framework to adapt 2D Gaussian Splatting (2DGS) to satellite photogrammetry, with online camera adjustment. We approximate satellite cameras with an affine model and learn a minimal delta parameterization for in-splat camera refinement from dense observations. To handle time-varying shadows and illumination changes, we integrate geometric shadow mapping and per-camera color correction during training.
+            </p>
+            <p>
+              Across the evaluated DFC2019 and IARPA2016 benchmark sites, SatSplat achieves strong geometric accuracy while significantly outperforming prior 3DGS-based baselines. On our processed DFC2019 benchmark, SatSplat reduces mean absolute error by 11.93% and peak video memory by 31% relative to the previous state of the art.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <p class="subtitle has-text-centered">
+        Dataset-level average MAE<sub>reg</sub> in meters. Lower is better.
+      </p>
+
+      <div class="metric-strip">
+        <div class="metric">
+          <div class="value">1.33 m</div>
+          <div class="label">Best all-class average on JAX</div>
+        </div>
+        <div class="metric">
+          <div class="value">0.97 m</div>
+          <div class="label">Best all-class average on OMA</div>
+        </div>
+        <div class="metric">
+          <div class="value">1.19 m</div>
+          <div class="label">Best building-only average on IARPA</div>
+        </div>
+        <div class="metric">
+          <div class="value">14 min</div>
+          <div class="label">Training time per tile in our evaluation</div>
+        </div>
+      </div>
+
+      <div class="results-table">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th rowspan="2">Method</th>
+              <th colspan="3">All Classes</th>
+              <th colspan="3">Building Only</th>
+              <th rowspan="2">Time (min)</th>
+            </tr>
+            <tr>
+              <th>JAX</th>
+              <th>OMA</th>
+              <th>IARPA</th>
+              <th>JAX</th>
+              <th>OMA</th>
+              <th>IARPA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>ASP</td><td>2.09</td><td>1.00</td><td>2.38</td><td>1.88</td><td>2.12</td><td>1.90</td><td>2</td></tr>
+            <tr><td>s2p</td><td>2.98</td><td>1.30</td><td>3.28</td><td>3.45</td><td>2.13</td><td>3.20</td><td>20</td></tr>
+            <tr><td>SAT-NGP</td><td>3.01</td><td>2.01</td><td>2.37</td><td>3.40</td><td>3.99</td><td>2.70</td><td>23</td></tr>
+            <tr><td>EOGS</td><td>1.50</td><td>1.47</td><td><strong>1.86</strong></td><td>1.25</td><td>2.64</td><td>1.37</td><td>3</td></tr>
+            <tr><td>Skyfall-GS (w/o IDU)</td><td>1.78</td><td>1.22</td><td>2.55</td><td>1.45</td><td>1.69</td><td>2.17</td><td>30</td></tr>
+            <tr><td>Skyfall-GS (w/ IDU)</td><td>1.88</td><td>1.40</td><td>2.60</td><td>1.58</td><td>1.81</td><td>2.05</td><td>120</td></tr>
+            <tr class="ours-row"><td>SatSplat (Ours)</td><td>1.33</td><td>0.97</td><td>1.92</td><td>0.93</td><td>1.37</td><td>1.19</td><td>14</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="title is-4 has-text-centered mt-6">Qualitative Comparison</h3>
+      <p class="subtitle has-text-centered">
+        JAX-168, OMA-212, and OMA-315 reconstructions across competing methods.
+      </p>
+
+      <div class="qualitative-wrap">
+        <div class="qualitative-grid">
+          <div></div>
+          <div class="qual-header">(a)<br>Google Earth</div>
+          <div class="qual-header">(b)<br>ASP</div>
+          <div class="qual-header">(c)<br>s2p</div>
+          <div class="qual-header">(d)<br>Sat-NGP</div>
+          <div class="qual-header">(e)<br>EOGS</div>
+          <div class="qual-header">(f)<br>Skyfall-GS<br>w/o IDU</div>
+          <div class="qual-header">(g)<br>Skyfall-GS<br>w/ IDU</div>
+          <div class="qual-header">(h)<br>SatSplat</div>
+          <div class="qual-header">(i)<br>GT</div>
+
+          <div class="site-label">JAX-168</div>
+          <img src="static/images/qualitative/JAX_168/google_earth.jpg" alt="JAX-168 Google Earth reference">
+          <img src="static/images/qualitative/JAX_168/asp.jpg" alt="JAX-168 ASP reconstruction">
+          <img src="static/images/qualitative/JAX_168/s2p.jpg" alt="JAX-168 s2p reconstruction">
+          <img src="static/images/qualitative/JAX_168/sat_ngp.jpg" alt="JAX-168 Sat-NGP reconstruction">
+          <img src="static/images/qualitative/JAX_168/eogs.jpg" alt="JAX-168 EOGS reconstruction">
+          <img src="static/images/qualitative/JAX_168/skyfall_wo_idu.jpg" alt="JAX-168 Skyfall-GS without IDU reconstruction">
+          <img src="static/images/qualitative/JAX_168/skyfall_w_idu.jpg" alt="JAX-168 Skyfall-GS with IDU reconstruction">
+          <img class="ours-cell" src="static/images/qualitative/JAX_168/satsplat.jpg" alt="JAX-168 SatSplat reconstruction">
+          <img src="static/images/qualitative/JAX_168/gt.jpg" alt="JAX-168 ground truth">
+
+          <div class="site-label">OMA-212</div>
+          <img src="static/images/qualitative/OMA_212/google_earth.jpg" alt="OMA-212 Google Earth reference">
+          <img src="static/images/qualitative/OMA_212/asp.jpg" alt="OMA-212 ASP reconstruction">
+          <img src="static/images/qualitative/OMA_212/s2p.jpg" alt="OMA-212 s2p reconstruction">
+          <img src="static/images/qualitative/OMA_212/sat_ngp.jpg" alt="OMA-212 Sat-NGP reconstruction">
+          <img src="static/images/qualitative/OMA_212/eogs.jpg" alt="OMA-212 EOGS reconstruction">
+          <img src="static/images/qualitative/OMA_212/skyfall_wo_idu.jpg" alt="OMA-212 Skyfall-GS without IDU reconstruction">
+          <img src="static/images/qualitative/OMA_212/skyfall_w_idu.jpg" alt="OMA-212 Skyfall-GS with IDU reconstruction">
+          <img class="ours-cell" src="static/images/qualitative/OMA_212/satsplat.jpg" alt="OMA-212 SatSplat reconstruction">
+          <img src="static/images/qualitative/OMA_212/gt.jpg" alt="OMA-212 ground truth">
+
+          <div class="site-label">OMA-315</div>
+          <img src="static/images/qualitative/OMA_315/google_earth.jpg" alt="OMA-315 Google Earth reference">
+          <img src="static/images/qualitative/OMA_315/asp.jpg" alt="OMA-315 ASP reconstruction">
+          <img src="static/images/qualitative/OMA_315/s2p.jpg" alt="OMA-315 s2p reconstruction">
+          <img src="static/images/qualitative/OMA_315/sat_ngp.jpg" alt="OMA-315 Sat-NGP reconstruction">
+          <img src="static/images/qualitative/OMA_315/eogs.jpg" alt="OMA-315 EOGS reconstruction">
+          <img src="static/images/qualitative/OMA_315/skyfall_wo_idu.jpg" alt="OMA-315 Skyfall-GS without IDU reconstruction">
+          <img src="static/images/qualitative/OMA_315/skyfall_w_idu.jpg" alt="OMA-315 Skyfall-GS with IDU reconstruction">
+          <img class="ours-cell" src="static/images/qualitative/OMA_315/satsplat.jpg" alt="OMA-315 SatSplat reconstruction">
+          <img src="static/images/qualitative/OMA_315/gt.jpg" alt="OMA-315 ground truth">
+        </div>
+      </div>
+
+      <p class="caption">
+        Qualitative comparison on the JAX-168, OMA-212, and OMA-315 sites. SatSplat reconstructs fine-grained details, such as trees and small structures on buildings, while maintaining smooth flat surfaces that are missed or poorly reconstructed by other methods.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Surface Quality</h2>
+      <div class="paired-figure">
+        <div>
+          <div class="image-label">Without normal loss</div>
+          <img src="static/images/normal_without.jpg" alt="SatSplat result without normal loss">
+        </div>
+        <div>
+          <div class="image-label">With normal loss</div>
+          <img src="static/images/normal_with.jpg" alt="SatSplat result with normal loss">
+        </div>
+      </div>
+      <p class="caption">
+        The normal loss leverages the explicit 2DGS surface representation and produces cleaner, more coherent DSM geometry.
+      </p>
+    </div>
+  </section>
+
+  <section class="section hero is-light section-divider">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Novel View Quality</h2>
+      <div class="paired-figure">
+        <div>
+          <div class="image-label">EOGS, nadir view</div>
+          <img src="static/images/eogs_nadir.jpg" alt="EOGS novel view from nadir">
+        </div>
+        <div>
+          <div class="image-label">SatSplat, nadir view</div>
+          <img src="static/images/satsplat_nadir.jpg" alt="SatSplat novel view from nadir">
+        </div>
+        <div>
+          <div class="image-label">EOGS, tilted view</div>
+          <img src="static/images/eogs_tilt.jpg" alt="EOGS novel view from a tilted perspective">
+        </div>
+        <div>
+          <div class="image-label">SatSplat, tilted view</div>
+          <img src="static/images/satsplat_tilt.jpg" alt="SatSplat novel view from a tilted perspective">
+        </div>
+      </div>
+      <p class="caption">
+        Compared with oversized and floating Gaussians, SatSplat keeps the representation anchored to the terrain surface, improving geometry and rendering quality.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Efficiency and Robustness</h2>
+      <div class="columns is-variable is-5">
+        <div class="column">
+          <figure class="result-figure">
+            <img src="static/images/vram_trajectory.png" alt="VRAM usage trajectory during training">
+            <figcaption class="caption">
+              SatSplat keeps memory usage stable by optimizing a bounded splat budget.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure class="result-figure">
+            <img src="static/images/accuracy_efficiency.png" alt="Accuracy efficiency trade-off under different splat budgets">
+            <figcaption class="caption">
+              The 100K splat budget gives the best geometric accuracy in our DFC2019 study.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <figure class="result-figure mt-5">
+        <img src="static/images/camera_robustness.png" alt="Camera optimization tolerance analysis">
+        <figcaption class="caption">
+          Online affine camera optimization improves robustness when initial camera poses are perturbed.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section hero is-light section-divider">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Citation</h2>
+      <pre><code>@article{song2026satsplat,
+  title   = {SatSplat: Geometrically-Accurate Gaussian Splatting for Satellite Imagery},
+  author  = {Song, Shuang and Kim, Jiyong and Qin, Rongjun},
+  journal = {Photogrammetric Engineering &amp; Remote Sensing},
+  year    = {2026},
+  note    = {Coming soon}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <p>
+          Built by the Geospatial Data Analytics Laboratory at The Ohio State University.
+          Page style adapted from the Academic Project Page Template.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
